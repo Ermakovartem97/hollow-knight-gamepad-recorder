@@ -30,8 +30,8 @@ Tool-Assisted Speedrun (TAS) tool for Hollow Knight. Record and replay gamepad i
 
 2. **Clone and install**
    ```bash
-   git clone https://github.com/yourusername/hollow-knight-tas.git
-   cd hollow-knight-tas
+   git clone https://github.com/Ermakovartem97/hollow-knight-gamepad-recorder.git
+   cd hollow-knight-gamepad-recorder
    pip install -r requirements.txt
    ```
 
