@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0",
+  "gamepad": {
+    "record_button": 8,
+    "play_button": 9,
+    "polling_rate": 250,
+    "stick_deadzone": 0.05,
+    "trigger_deadzone": 0.05,
+    "interference_threshold": 0.2,
+    "invert_left_stick_y": true,
+    "quantize_sticks": true
+  },
+  "recording": {
+    "max_slots": 30,
+    "max_events_per_slot": 100000,
+    "auto_save": true,
+    "backup_on_save": true,
+    "recordings_dir": "recordings"
+  },
+  "ui": {
+    "overlay_enabled": true,
+    "overlay_position": "top-right",
+    "overlay_alpha": 0.95,
+    "overlay_width": 300,
+    "overlay_height": 130,
+    "always_on_top": true,
+    "update_rate": 10,
+    "theme": "dark"
+  },
+  "playback": {
+    "enable_looping": false,
+    "loop_count": -1,
+    "continue_on_interference": true,
+    "startup_delay": 0.0
+  },
+  "hotkeys": {
+    "save": "s",
+    "load": "l",
+    "quit": "q",
+    "toggle_overlay": "o",
+    "toggle_topmost": "t"
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "gamepad_recorder.log",
+    "console": true,
+    "max_file_size": 10485760,
+    "backup_count": 3
+  }
+}

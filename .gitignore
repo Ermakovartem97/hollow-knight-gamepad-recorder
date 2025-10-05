@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# IDE
+.idea/
+.vscode/
+.claude/
+
+# Project
+recordings/*.json
+!recordings/.gitkeep
+config/user_config.json
+*.log
+*.log.*
+GITHUB_UPLOAD_GUIDE.md
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
