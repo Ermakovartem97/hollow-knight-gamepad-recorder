@@ -24,6 +24,13 @@ config/user_config.json
 GITHUB_UPLOAD_GUIDE.md
 *.zip
 
+# Release files (itch.io, etc)
+itch-io-release/
+release-temp/
+*.png
+create_cover.py
+ITCH_IO_PAGE.md
+
 # OS
 .DS_Store
 Thumbs.db
