@@ -1,0 +1,61 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pyinstaller
+
+    - name: Build with PyInstaller
+      run: |
+        pyinstaller gamepad_recorder.spec
+
+    - name: Create release package
+      run: |
+        mkdir release-temp
+        mkdir "release-temp\hollow-knight-gamepad-recorder"
+        copy "dist\HollowKnightGamepadRecorder.exe" "release-temp\hollow-knight-gamepad-recorder\"
+        copy "README.md" "release-temp\hollow-knight-gamepad-recorder\"
+        copy "LICENSE" "release-temp\hollow-knight-gamepad-recorder\"
+        xcopy "config" "release-temp\hollow-knight-gamepad-recorder\config\" /E /I
+      shell: cmd
+
+    - name: Create ZIP archive
+      run: |
+        cd release-temp
+        powershell Compress-Archive -Path "hollow-knight-gamepad-recorder" -DestinationPath "..\HollowKnightGamepadRecorder-Windows.zip"
+      shell: cmd
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: HollowKnightGamepadRecorder-Windows
+        path: HollowKnightGamepadRecorder-Windows.zip
+
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: HollowKnightGamepadRecorder-Windows.zip
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
